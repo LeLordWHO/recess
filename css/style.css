@@ -1,0 +1,9 @@
+@font-face {
+  font-family: 'RecessFont';
+  src: url('recess.ttf');
+}
+
+body {
+    font-family: 'RecessFont';
+    font-size: 45px;
+}
