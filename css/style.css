@@ -1,0 +1,18 @@
+@font-face {
+  font-family: 'RecessFont';
+  src: url('recess.ttf');
+}
+
+body {
+    font-family: 'RecessFont';
+    font-size: 40px;
+}
+
+table {
+    width:80%;
+}
+
+td {
+    text-align: left;
+    vertical-align: top;
+}
