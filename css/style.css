@@ -1,0 +1,27 @@
+@font-face {
+  font-family: 'RecessFont';
+  src: url('recess.ttf');
+}
+
+body {
+    font-family: 'RecessFont';
+    font-size: 40px;
+    background-image: url("../images/bg.jpg");
+    color: white;
+}
+
+table {
+    width:80%;
+}
+
+td {
+    text-align: left;
+    vertical-align: top;
+}
+
+.back-button-container {
+    position: fixed; /* Make it stick/fixed on top left */
+    top: 0;
+    left: 0;
+    margin: 10px; /* Optional: add some spacing from the edges */
+  }
