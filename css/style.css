@@ -6,8 +6,18 @@
 body {
     font-family: 'RecessFont';
     font-size: 40px;
-    background-image: url("../images/bg.jpg");
+    background-image: url("../images/ella_background-cropped.jpg");
     color: white;
+    background-color: black;
+    background-size: auto 380% ; /* The image starts at 50% of the body's width */
+    background-position: top-left; /* This starts the image from the left */
+    background-repeat: no-repeat; /* This prevents the image from repeating */
+    background-attachment: fixed;
+}
+
+td {
+    font-family: 'sans';
+    font-size: 18px;
 }
 
 table {

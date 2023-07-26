@@ -87,34 +87,54 @@ export function onFaceClick(event, camera, solid) {
 
   if (intersects.length > 0) {
     const faceIndex = Math.floor(intersects[0].faceIndex / 2);
-    const url = getURL(faceIndex); // Replace 'getURL' with your function to get the URL for the faceIndex
+    const url = getURL(faceIndex); // replace 'getURL' with your function to get the URL for the faceIndex
     window.location.href = url;
   }
 }
 
 function getURL(faceIndex) {
-  let page;
-  switch (faceIndex) {
-    case 0:
-      page = 'music';
-      break;
-    case 1:
-      page = 'videos';
-      break;
-    case 2:
-      page = 'words';
-      break;
-    // add more cases for other face indices as needed
-    default:
-      page = 'music';
-      break;
-  }
+  let page = getWord(faceIndex).replace(/\s/g, ""); // remove whitespace
   return `${page}.html`;
 }
 
 function getWord(faceIndex) {
-  const words = ['music', 'videos', 'words', 'video games', 'maths', 'about'];
+  const words = ['music', 'videos', 'words', 'video games', 'maths', 'gallery', 'about'];
   return words[faceIndex % words.length];
+}
+
+export function shuffle(array) {
+  var currentIndex = array.length, temporaryValue, randomIndex;
+
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+
+  return array;
+}
+
+export function faceColours(index) {
+  const rainbowColors = [
+    0xFF0000, // Red
+    0xFFA500, // Orange
+    0xFFFF00, // Yellow
+    0x00FF00, // Green
+    0x0000FF, // Blue
+    0x4B0082, // Indigo
+    0xEE82EE, // Violet
+    0xFFC0CB, // Pink
+    0xFF00FF, // Magenta
+    0x00FFFF  // Cyan
+  ];
+  return rainbowColors[index];
 }
 
 export function addBezierCurve(vertices, curvePoints, scene, material) {
