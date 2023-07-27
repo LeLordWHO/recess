@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Collapsible Box Example</title>
+  <style>
+    .collapsible-container {
+      margin: 1em 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    
+    .collapsible-header {
+      display: flex;
+      align-items: center;
+      padding: 0.5em;
+      cursor: pointer;
+      background-color: #f9f9f9;
+    }
+    
+    .arrow {
+      transition: all 0.3s ease;
+      margin-right: 0.5em;
+    }
+    
+    .collapsible-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      padding: 0 0.5em;
+    }
+    
+    .collapsible-content.open {
+      max-height: 1000px; /* you may want to adjust this */
+    }
+  </style>
+</head>
+<body>
+  <div class="collapsible-container">
+    <div class="collapsible-header">
+      <span class="arrow">&#9654;</span>
+      <h3>Header</h3>
+    </div>
+    <div class="collapsible-content">
+      <p>Your content goes here...</p>
+    </div>
+  </div>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.collapsible-header').forEach((header) => {
+        header.addEventListener('click', () => {
+          const content = header.nextElementSibling;
+          const arrow = header.querySelector('.arrow');
+          
+          if(content.style.maxHeight){
+            content.style.maxHeight = null;
+            arrow.innerHTML = '&#9654;';
+          } else {
+            content.style.maxHeight = content.scrollHeight + "px";
+            arrow.innerHTML = '&#9660;';
+          } 
+        });
+      });
+    }); 
+  </script>
+</body>
+</html>

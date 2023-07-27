@@ -3,6 +3,38 @@
   src: url('recess.ttf');
 }
 
+@font-face {
+    font-family: 'ITCErasStdMedium';
+    src: url('ITCErasStdMedium.otf');
+  }
+  
+@font-face {
+    font-family: 'OratorStd';
+    src: url('OratorStd.otf');
+  }  
+
+@font-face {
+    font-family: 'OCRAStd';
+    src: url('OCRAStd.otf');
+  } 
+  
+@font-face {
+    font-family: 'Miriam Libre Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Miriam Libre Regular'), url('MiriamLibre-Regular.woff') format('woff');
+    }
+    
+
+@font-face {
+    font-family: 'Miriam Libre Bold';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Miriam Libre Bold'), url('MiriamLibre-Bold.woff') format('woff');
+    }
+
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap');
+
 body {
     font-family: 'RecessFont';
     font-size: 40px;
@@ -16,8 +48,8 @@ body {
 }
 
 td {
-    font-family: 'sans';
-    font-size: 18px;
+    font-family: 'Miriam Libre Regular', serif;
+    font-size: 20px;
 }
 
 table {
