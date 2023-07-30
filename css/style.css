@@ -42,7 +42,7 @@ body {
     background-position: top-left; /* This starts the image from the left */
     background-repeat: no-repeat; /* This prevents the image from repeating */
     background-attachment: fixed;
-    background-size: cover !important;
+    background-size: cover;
 }
 
 td {
@@ -63,6 +63,9 @@ td.image {
   vertical-align: middle;
 }
 
+.h1 {
+  font-size: 62px;
+}
 
 .logo {
   width: 280px;
@@ -95,5 +98,74 @@ td.image {
     display: flex;
     align-items: center;
     height: 100%;
+}
+
+.collapsible-container {
+  margin: 0em 0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.collapsible-header {
+  display: flex;
+  align-items: center;
+  padding: 0.5em 0.5em;  
+  cursor: pointer;
+  background-color: rgba(92, 255, 43, 0.2);
+  font-size: 0.8em;
+  line-height: 1em; 
+}
+
+.collapsible-header-sub {
+  background-color: rgb(153, 35, 35, 0.2);
+}
+
+.arrow {
+  transition: all 0.3s ease;
+  margin-right: 0.5em;
+}
+
+.collapsible-content {
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform .2s;
+  padding-left: 50px; /* Adjust this value as needed */
+}
+
+.collapsible-content.open {
+  max-height: 1000px; /* you may want to adjust this */
+}
+
+
+.words-content {
+  width: 1000px;
+  margin: 0 auto;
+}
+
+.nice-words {
+  font-family: 'Miriam Libre Regular', serif;
+  font-size: 20px; 
+  width: 876px;
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+.fr {
+  text-align: right;
+}
+
+.right-aligned {
+  margin-left: auto;
+  padding-right: 10px;
+}
+
+.accordion-item {
+  background-color: transparent;
+}
+
+.accordion-button {
+  background-color: transparent;
+  color: white;
+  font-size: 43px;
 }
 
