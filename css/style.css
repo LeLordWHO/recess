@@ -42,6 +42,7 @@ body {
     background-position: top-left; /* This starts the image from the left */
     background-repeat: no-repeat; /* This prevents the image from repeating */
     background-attachment: fixed;
+    background-size: cover;
 }
 
 td {
