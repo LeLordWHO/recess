@@ -73,6 +73,8 @@ fetch('hopscotch.json')
   .catch(error => console.error(error));
   
 camera.position.z = 5;
+camera.position.x = -1.2;
+camera.position.y = 0.3; 
 scene.rotation.x = -35 * Math.PI / 180;
 scene.rotation.z = 45 * Math.PI / 180;
 scene.position.set(-2.5, 3, 0);

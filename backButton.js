@@ -1,8 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
     const backButtonHTML = `
-      <a href="index.html">
-        Back
-      </a>
+      <a href="index.html"> <img class="logo-back" src="images/recessManInv.png"> </a>
     `;
   
     const backButtonContainer = document.createElement("div");

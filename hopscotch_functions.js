@@ -98,7 +98,7 @@ function getURL(faceIndex) {
 }
 
 function getWord(faceIndex) {
-  const words = ['music', 'videos', 'words', 'video games', 'maths', 'gallery', 'about'];
+  const words = ['music', 'words', 'video games', 'maths', 'videos', 'gallery', 'about'];
   return words[faceIndex % words.length];
 }
 

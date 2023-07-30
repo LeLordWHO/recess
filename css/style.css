@@ -33,15 +33,12 @@
     src: local('Miriam Libre Bold'), url('MiriamLibre-Bold.woff') format('woff');
     }
 
-@import url('https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap');
-
 body {
     font-family: 'RecessFont';
     font-size: 40px;
-    background-image: url("../images/ella_background-cropped.jpg");
+    background-image: url("../images/ella_space.jpg");
     color: white;
     background-color: black;
-    background-size: auto 380% ; /* The image starts at 50% of the body's width */
     background-position: top-left; /* This starts the image from the left */
     background-repeat: no-repeat; /* This prevents the image from repeating */
     background-attachment: fixed;
@@ -61,9 +58,41 @@ td {
     vertical-align: top;
 }
 
+td.image {
+  vertical-align: middle;
+}
+
+
+.logo {
+  width: 280px;
+  padding-left: 30px;
+  padding-top: 30px;
+  position: relative; 
+  z-index: 3;
+}
+
+.logo-back {
+  width: 8vw;
+  padding-left: 8px;
+  padding-top: 10px;
+  position: relative; 
+  z-index: 3;
+}
+
 .back-button-container {
     position: fixed; /* Make it stick/fixed on top left */
     top: 0;
     left: 0;
     margin: 10px; /* Optional: add some spacing from the edges */
   }
+
+  a {
+    color: skyblue;
+  }
+
+  .iframe-container {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
