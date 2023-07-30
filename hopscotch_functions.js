@@ -1,4 +1,4 @@
-import * as THREE from 'three';
+import * as THREE from 'https://cdn.skypack.dev/three@0.125.0';
 
 export function createWireframeGeometry(vertices, edges) {
     const geometry = new THREE.BufferGeometry();
