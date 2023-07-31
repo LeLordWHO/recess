@@ -1,5 +1,5 @@
-import * as THREE from 'https://cdn.skypack.dev/three@0.125.0';
-import { OrbitControls } from 'https://cdn.skypack.dev/three@0.125.0/examples/jsm/controls/OrbitControls.js';
+import * as THREE from 'three';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
 import { createWireframeGeometry, onMouseMove, onFaceClick, addBezierCurve, faceColours, shuffle } from './hopscotch_functions.js';
 
