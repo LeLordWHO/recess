@@ -39,7 +39,6 @@ body {
     background-image: url("../images/bg-space.jpg");
     color: white;
     background-color: black;
-    
     background-repeat: repeat; /* This prevents the image from repeating */
     background-size: 120%;
 }
@@ -150,6 +149,7 @@ td.image {
   padding-left: 1em;
   padding-right: 0.5em;
   background-color: rgb(0, 0, 0,0.7);
+  margin: 0 auto;
 }
 
 .fr {
