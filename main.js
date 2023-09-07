@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
-import { createWireframeGeometry, onMouseMove, onFaceClick, addBezierCurve, faceColours, shuffle } from './hopscotch_functions.js';
+import { createWireframeGeometry, onMouseMove, onFaceClick, addBezierCurve, faceColours, shuffle, words } from './hopscotch_functions.js';
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(100, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -22,7 +22,7 @@ let wireframe, solid;
 const wire_opacity =0.8;
 const wire_width = 3;
 const wire_color = 0xffffff;
-const min_opacity = 0.1;
+const min_opacity = 0.15;
 const max_opacity = 0.8;
 renderer.domElement.addEventListener('mousemove', event => onMouseMove(event, camera, solid, min_opacity, max_opacity));
 renderer.domElement.addEventListener('click', event => onFaceClick(event, camera, solid));
@@ -42,7 +42,7 @@ fetch('hopscotch.json')
     let indicesArr = Array.from({length:  10}, (_, i) => i * 2);
     let shuffledIndices = shuffle(indicesArr);
     console.log(shuffledIndices)
-    for (let j = 0; j < 10; j++) {
+    for (let j = 0; j < Math.min(words.length,10); j++) {
       let i = shuffledIndices[j];
       materials.push(new THREE.MeshBasicMaterial({ color: faceColours(i/2) , opacity: min_opacity, transparent: true}));
     }

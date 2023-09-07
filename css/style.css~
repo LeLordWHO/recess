@@ -1,26 +1,4 @@
 @font-face {
-  font-family: 'Computer Modern Roman';
-  src: url('cmunrm.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Computer Modern Roman';
-  src: url('cmunbx.ttf') format('truetype');
-  font-weight: bold;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Computer Modern Roman';
-  src: url('cmunti.ttf') format('truetype');
-  font-weight: normal;
-  font-style: italic;
-}
-
-
-@font-face {
     font-family: 'RecessFont';
     src: url('recess.ttf');
 }
@@ -197,12 +175,6 @@ a {
     margin: 0 auto;
 }
 
-.nice-maths {
-    text-align: center;
-    font-family: 'Computer Modern Roman', serif;
-}
-
-
 .fr {
     text-align: right;
 }
@@ -261,7 +233,7 @@ a {
     margin-bottom: 100px;
 }
 
-.mycanvas {
+canvas {
     border: 1px solid black;
     position: absolute;
 }

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>Recess.fr</title>
     <link rel="icon" type="image/png" href="images/fav.png">
     <link rel="stylesheet" href="css/style.css">
-</head>
-<style>
+  </head>
+  <style>
     table {
         border:1px solid #404040;
     }
@@ -13,12 +13,40 @@
         border:1px solid #404040;
         padding: 15px;
     }
-</style>
-<body bgcolor="#000000" text="#404040" link="#1a4dba" vlink="#1a4dba" alink="#1a4dba" >
+  </style>
+  <body bgcolor="#000000" text="#404040" link="#1a4dba" vlink="#1a4dba" alink="#1a4dba" >
     <center>
-        <h1>Maths</h1>
+      <h1>Maths</h1>
     </center>
-    <h3> The shape of a theorem (or Pappus revisited)  </h3>
+    <div id="canvasContainer" style=" margin-left: auto;
+  margin-right: auto; width: 820px; margin-top: -0.7em;">
+      <canvas class="mycanvas" id="canvas1" width="300" height="300"></canvas>
+      <canvas class="mycanvas" id="canvas2" width="300" height="300"></canvas>
+      <canvas class="mycanvas" id="canvas4" width="300" height="300"></canvas>
+      <canvas class="mycanvas" id="canvas5" width="300" height="300"></canvas>
+      <div id="syncPercentage"></div>
+      <svg width="820" height="730">
+	<defs>
+	  <!-- Reduced markerWidth and markerHeight to 5 -->
+	  <marker id="arrow" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto" markerUnits="strokeWidth">
+	    <!-- Adjusted the path coordinates -->
+	    <path d="M0,0 L0,5 L5,2.5 z" fill="#fff" />
+	  </marker>
+	</defs>
+	<line opacity="0.6" x1="350" y1="150" x2="470" y2="150" stroke="#fff" stroke-width="7" marker-end="url(#arrow)" />
+	<line opacity="0.6" x1="350" y1="570" x2="470" y2="570" stroke="#fff" stroke-width="7" marker-end="url(#arrow)" />
+	<line opacity="0.6" x1="160" y1="330" x2="160" y2="400" stroke="#fff" stroke-width="7" marker-end="url(#arrow)" />
+	<line opacity="0.6" x1="670" y1="330" x2="670" y2="400" stroke="#fff" stroke-width="7" marker-end="url(#arrow)" />
+	<text x="396" y="130" font-family="Computer Modern Roman" fill="#fff" stroke="#fff" font-size="20">+1</text>
+	<text x="396" y="605" font-family="Computer Modern Roman" fill="#fff" stroke="#fff" font-size="20">+1</text>
+	<text x="120" y="370" font-family="Computer Modern Roman" fill="#fff" stroke="#fff" font-size="20">F</text>
+	<text x="700" y="370" font-family="Computer Modern Roman" fill="#fff" stroke="#fff" font-size="20">F</text>
+      </svg>
+    </div>
+
+    <div class="nice-maths" style="margin-top: -2.2em;"> coming soon... </div>
+
     <script src="./backButton.js"></script>
-</body>
+    <script type="module" src="cellFun/cellularAutomaton.js"></script>
+  </body>
 </html> 
