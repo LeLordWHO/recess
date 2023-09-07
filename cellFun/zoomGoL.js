@@ -15,17 +15,15 @@ function initialize(width, height) {
     return grid;
 }
 
-// Function to count the alive neighbors of a cell (currently acts like a torus)
+// Function to count the alive neighbors of a cell
 function countAliveNeighbors(grid, i, j) {
     let count = 0;
-    for (let x = i - 1; x <= i + 1; x++) {
-        for (let y = j - 1; y <= j + 1; y++) {
-            let wrappedX = (x + grid.length) % grid.length;
-            let wrappedY = (y + grid[0].length) % grid[0].length;
-            count += grid[wrappedX][wrappedY];
+    for (let x = Math.max(i-1, 0); x <= Math.min(i+1, grid.length-1); x++) {
+        for (let y = Math.max(j-1, 0); y <= Math.min(j+1, grid[0].length-1); y++) {
+            count += grid[x][y] !== 0 ? 1 : 0;  // Counts any non-zero state as 1
         }
     }
-    count -= grid[i][j]; // Reduce the count by one if the cell itself is alive
+    count -= grid[i][j] !== 0 ? 1 : 0; // Reduce the count by one if the cell itself is alive (non-zero)
     return count;
 }
 

@@ -130,20 +130,4 @@ function update(grid, i, j) {
 }
 
 
-
-
-
-// Test
-for(let n=0; n<=15; n++) {
-    const binaryArray = numberToBinaryArray(n);
-    const result = binaryArrayToNumber(binaryArray);
-
-    if(result !== n) {
-        console.log(`Failed at ${n}`);
-        break;
-    } else {
-        console.log(`Passed at ${n}`);
-    }
-}
-
 export {initialize, update, states, convertBinaryArray};

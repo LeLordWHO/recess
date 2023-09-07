@@ -9,46 +9,22 @@ let cellSizes = [6,12]; // Size of a cell in pixels
 
 let grid1 = {data: initialize1(width, height)};
 let grid2 = {data: cellFunctor(grid1.data)}; // Initial grid of CA2 is obtained by applying cellFunctor to grid1
-let grid3 = {data: cellFunctor(grid1.data)};
 let grid4 = {data: JSON.parse(JSON.stringify(grid1.data))};
 let grid5 = {data: JSON.parse(JSON.stringify(grid2.data))};
 
 let canvas1, ctx1;
 let canvas2, ctx2;
-let canvas3, ctx3;
 let canvas4, ctx4;
 let canvas5, ctx5;
-let speedSlider, updateSpeed, evolveCheckbox, stepButton;
 let timeoutId; // to store the id of the setTimeout
 
-let notInitialized = 3; 
+let updateSpeed = 400;
+let notInitialized = 2;
+let updateCount = 0;
 
 let grids, canvasContexts, updateFunctions;
 
-let syncPercentageElement; 
 let totalCells = grid2.data.length * grid2.data[0].length; // calculate total cells
-
-function computeSyncPercentage() {
-    let matchingCells = 0;
-    for (let i = 0; i < grid2.data.length; i++) {
-        for (let j = 0; j < grid2.data[i].length; j++) {
-            if (grid2.data[i][j] === grid3.data[i][j]) {
-                matchingCells++;
-            }
-        }
-    }
-    let syncPercentage = (matchingCells / totalCells) * 100;
-    
-    // Change color based on syncPercentage
-    if (syncPercentage === 100) {
-        syncPercentageElement.style.color = "darkgreen";
-    } else {
-        syncPercentageElement.style.color = "black";
-    }
-
-    return syncPercentage;
-}
-
 
 function drawAndEvolve() {
     // clear previous timeout
@@ -58,42 +34,35 @@ function drawAndEvolve() {
         let ctx = canvasContexts[i];
         let canvas = ctx.canvas;
         let updateFunction = updateFunctions[i];
-	let currentCellSize = i === 0 || i === 3 ? cellSizes[0] : cellSizes[1]; 
-	
+	let currentCellSize = i === 0 || i === 2 ? cellSizes[0] : cellSizes[1]; 
+	console.log();
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         for (let i = 0; i < grid.data.length; i++) {
-            for (let j = 0; j < grid.data[0].length; j++) {
-                ctx.fillStyle = colors[grid.data[i][j] % colors.length];
-                ctx.fillRect(j * currentCellSize, i * currentCellSize, currentCellSize, currentCellSize);
-            }
-        }
+	    for (let j = 0; j < grid.data[0].length; j++) {
+		if (grid.data[i][j] === 0) {
+		    ctx.fillStyle = 'rgba(0, 0, 0, 0)'; // Fully transparent
+		} else {
+		    ctx.fillStyle = colors[grid.data[i][j] % colors.length];
+		}
+		ctx.fillRect(j * currentCellSize, i * currentCellSize, currentCellSize, currentCellSize);
+	    }
+	}
 
-        if (evolveCheckbox.checked || notInitialized) {
-            if (i !== 2) { // For grids other than grid3
-                let newGrid = new Array(grid.data.length);
-                for (let i = 0; i < grid.data.length; i++) {
-                    newGrid[i] = new Array(grid.data[0].length);
-                    for (let j = 0; j < grid.data[0].length; j++) {
-                        newGrid[i][j] = updateFunction(grid.data, i, j);
-                    }
+        if (notInitialized || updateCount) {
+            let newGrid = new Array(grid.data.length);
+            for (let i = 0; i < grid.data.length; i++) {
+                newGrid[i] = new Array(grid.data[0].length);
+                for (let j = 0; j < grid.data[0].length; j++) {
+                    newGrid[i][j] = updateFunction(grid.data, i, j);
                 }
-                grid.data = newGrid;
-            } else { // For grid3
-                grid.data = updateFunction(); // Apply the custom update function
             }
-            notInitialized = Math.max(0, notInitialized - 1);
+            grid.data = newGrid;
+            if (notInitialized)  {notInitialized = Math.max(0, notInitialized - 1);}
+	    else {updateCount = Math.max(0, updateCount - 1);}
         }
     }
-
-    updateSpeed = Math.max(10, 1000 - speedSlider.value);
-    if (evolveCheckbox.checked) {
-        timeoutId = setTimeout(drawAndEvolve, updateSpeed);
-    }
-    else {
-        timeoutId = setTimeout(drawAndEvolve, 300);
-    }
-    let syncPercentage = computeSyncPercentage();
-    syncPercentageElement.textContent = "Sync: " + syncPercentage.toFixed(2) + "%";
+    timeoutId = setTimeout(drawAndEvolve, updateSpeed);
+    updateCount = 4;
 }
 
 window.onload = function() {
@@ -103,39 +72,15 @@ window.onload = function() {
     canvas2 = document.getElementById("canvas2");
     ctx2 = canvas2.getContext("2d");
 
-    canvas3 = document.getElementById("canvas3");
-    ctx3 = canvas3.getContext("2d");
-
     canvas4 = document.getElementById("canvas4");
     ctx4 = canvas4.getContext("2d");
 
     canvas5 = document.getElementById("canvas5");
     ctx5 = canvas5.getContext("2d");
 
-    syncPercentageElement = document.getElementById("syncPercentage");
-    syncPercentageElement.style.fontWeight = "bold";
-    
-    speedSlider = document.getElementById("speedSlider");
-    evolveCheckbox = document.getElementById("evolveCheckbox");
-    evolveCheckbox.checked = false; // ensure checkbox is unchecked when page loads
-    stepButton = document.getElementById("stepButton");
-
-    grids = [grid1, grid2, grid3, grid4, grid5];
-    canvasContexts = [ctx1, ctx2, ctx3, ctx4, ctx5];
-    updateFunctions = [update1, update2, () => cellFunctor(grid1.data), update1, update2];
-
-    console.log(Math.max(...grid1.data[0]))
-
+    grids = [grid1, grid2, grid4, grid5];
+    canvasContexts = [ctx1, ctx2, ctx4, ctx5];
+    updateFunctions = [update1, update2, update1, update2];
     drawAndEvolve();
-
-    console.log(Math.max(...grid1.data[0]))
-
-    stepButton.onclick = function() {
-        if (!evolveCheckbox.checked) {
-            notInitialized = 5;
-            drawAndEvolve();
-            console.log(Math.max(...grid1.data[0]));
-        }
-    };
 };
 

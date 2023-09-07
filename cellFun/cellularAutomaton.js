@@ -35,7 +35,6 @@ function drawAndEvolve() {
         let canvas = ctx.canvas;
         let updateFunction = updateFunctions[i];
 	let currentCellSize = i === 0 || i === 2 ? cellSizes[0] : cellSizes[1]; 
-	console.log();
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         for (let i = 0; i < grid.data.length; i++) {
 	    for (let j = 0; j < grid.data[0].length; j++) {
