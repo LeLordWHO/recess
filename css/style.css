@@ -202,7 +202,6 @@ a {
     font-family: 'Computer Modern Roman', serif;
 }
 
-
 .fr {
     text-align: right;
 }
@@ -222,6 +221,7 @@ a {
     font-size: 43px;
     border: solid;
     border-color: transparent;
+    /*text-align: left !important;*/
 }
 
 .active-header {
@@ -316,3 +316,11 @@ a {
     font-family: serif;
     margin-left: auto;
 }
+
+br.special {
+    line-height: 200%;
+}
+
+.very-bold {
+    font-weight: 800;
+  }
