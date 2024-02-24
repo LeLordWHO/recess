@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 
-export const words = ['music', 'comics', 'words', 'videos', 'maths', 'about'];
+export const words = ['music', 'comics', 'words', 'gallery', 'videos', 'maths', 'about'];
 
 export function createWireframeGeometry(vertices, edges) {
   const geometry = new THREE.BufferGeometry();
