@@ -95,6 +95,11 @@ td.image {
     z-index: 3;
 }
 
+.thumbnail-container a img.thumbnail {
+    height: 200px;
+    width: auto;
+}
+
 .logo-back {
     width: 8vw;
     padding-left: 8px;
@@ -328,4 +333,14 @@ br.special {
 .ds {
     display: inline-block;
     width: 0.5em; /* Adjust as needed */
+}
+
+
+.lb-caption {
+    font-size: 26px !important; /* Adjust the font size as needed */
+    padding: 5px;
+}
+
+.lb-number {
+    font-size: 26px !important; /* Adjust the font size as needed */
 }
